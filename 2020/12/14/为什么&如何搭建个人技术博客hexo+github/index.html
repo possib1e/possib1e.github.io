@@ -20,23 +20,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="本博客hexo+next搭建的过程，详细记录中间所有命令和遇到的坑，最终效果如下所示。 首页的效果具体文章效果">
+  <meta name="description" content="为什么建议写个人技术博客，一是记得牢，二是有输出，三是找工作加分。你写博客的过程就是把自己学习、工作遇到的收获、坑点记录下来，因为要对外展示，所以会认真梳理逻辑和细节，相当于再复习一遍，并且这样的文章肯定比你私下的笔记让你更有再次阅读的欲望，想想你之前写过不想再看的代码和笔记。 为什么选用hexo github，因为hexo是用markdown渲染解析文章，方便复制粘贴到其他平台不影响排版，并且可">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo+next博客的搭建">
-<meta property="og:url" content="http://example.com/2020/12/14/hexo+next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:title" content="为什么&amp;如何搭建个人技术博客hexo github">
+<meta property="og:url" content="http://example.com/2020/12/14/%E4%B8%BA%E4%BB%80%E4%B9%88&%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2hexo+github/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="本博客hexo+next搭建的过程，详细记录中间所有命令和遇到的坑，最终效果如下所示。 首页的效果具体文章效果">
+<meta property="og:description" content="为什么建议写个人技术博客，一是记得牢，二是有输出，三是找工作加分。你写博客的过程就是把自己学习、工作遇到的收获、坑点记录下来，因为要对外展示，所以会认真梳理逻辑和细节，相当于再复习一遍，并且这样的文章肯定比你私下的笔记让你更有再次阅读的欲望，想想你之前写过不想再看的代码和笔记。 为什么选用hexo github，因为hexo是用markdown渲染解析文章，方便复制粘贴到其他平台不影响排版，并且可">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/2020/12/14/hexo+next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/2.png">
-<meta property="og:image" content="http://example.com/2020/12/14/hexo+next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/3.png">
-<meta property="og:image" content="http://example.com/2020/12/14/hexo+next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/1.png">
+<meta property="og:image" content="http://example.com/2020/12/14/%E4%B8%BA%E4%BB%80%E4%B9%88&%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2hexo+github/2.png">
+<meta property="og:image" content="http://example.com/2020/12/14/%E4%B8%BA%E4%BB%80%E4%B9%88&%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2hexo+github/3.png">
+<meta property="og:image" content="http://example.com/2020/12/14/%E4%B8%BA%E4%BB%80%E4%B9%88&%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2hexo+github/1.png">
 <meta property="article:published_time" content="2020-12-14T07:56:42.000Z">
-<meta property="article:modified_time" content="2020-12-14T15:04:43.058Z">
+<meta property="article:modified_time" content="2020-12-15T09:35:29.980Z">
 <meta property="article:author" content="possib1e">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/12/14/hexo+next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/2.png">
+<meta name="twitter:image" content="http://example.com/2020/12/14/%E4%B8%BA%E4%BB%80%E4%B9%88&%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2hexo+github/2.png">
 
-<link rel="canonical" href="http://example.com/2020/12/14/hexo+next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/">
+<link rel="canonical" href="http://example.com/2020/12/14/%E4%B8%BA%E4%BB%80%E4%B9%88&%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2hexo+github/">
 
 
 <script id="page-configurations">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>hexo+next博客的搭建 | Hexo</title>
+  <title>为什么&如何搭建个人技术博客hexo github | Hexo</title>
   
 
 
@@ -174,12 +174,12 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/14/hexo+next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/14/%E4%B8%BA%E4%BB%80%E4%B9%88&%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2hexo+github/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
       <meta itemprop="name" content="possib1e">
-      <meta itemprop="description" content="黑客大叔possib1e">
+      <meta itemprop="description" content="安全爱好者">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -187,7 +187,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          hexo+next博客的搭建
+          为什么&如何搭建个人技术博客hexo github
         </h1>
 
         <div class="post-meta">
@@ -196,10 +196,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-12-14 15:56:42 / 修改时间：23:04:43" itemprop="dateCreated datePublished" datetime="2020-12-14T15:56:42+08:00">2020-12-14</time>
+              <time title="创建时间：2020-12-14 15:56:42" itemprop="dateCreated datePublished" datetime="2020-12-14T15:56:42+08:00">2020-12-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-15 17:35:29" itemprop="dateModified" datetime="2020-12-15T17:35:29+08:00">2020-12-15</time>
+              </span>
 
           
 
@@ -212,10 +218,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <pre><code> 本博客hexo+next搭建的过程，详细记录中间所有命令和遇到的坑，最终效果如下所示。</code></pre>
-<p>首页的效果<br><img src="/2020/12/14/hexo+next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/2.png">具体文章效果<br><img src="/2020/12/14/hexo+next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/3.png"></p>
+        <p>为什么建议写个人技术博客，一是记得牢，二是有输出，三是找工作加分。你写博客的过程就是把自己学习、工作遇到的收获、坑点记录下来，因为要对外展示，所以会认真梳理逻辑和细节，相当于再复习一遍，并且这样的文章肯定比你私下的笔记让你更有再次阅读的欲望，想想你之前写过不想再看的代码和笔记。</p>
+<p>为什么选用hexo github，因为hexo是用markdown渲染解析文章，方便复制粘贴到其他平台不影响排版，并且可以发布在github上，免费运行，没有广告，页面可以自己随意优化。<br><a target="_blank" rel="noopener" href="https://possib1e.github.io/">https://possib1e.github.io/</a></p>
+<p>本文详细记录自己技术博客hexo github搭建的过程，详细记录中间所有命令和遇到的坑，最终效果如下所示。</p>
+<p>首页的效果<br><img src="/2020/12/14/%E4%B8%BA%E4%BB%80%E4%B9%88&%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2hexo+github/2.png">具体文章效果<br><img src="/2020/12/14/%E4%B8%BA%E4%BB%80%E4%B9%88&%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2hexo+github/3.png"></p>
 <a id="more"></a>
-<h2 id="1-node-js安装"><a href="#1-node-js安装" class="headerlink" title="1.node.js安装"></a>1.node.js安装</h2><p><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a><br><img src="/2020/12/14/hexo+next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/1.png" alt="nodejs"></p>
+<h2 id="1-node-js安装"><a href="#1-node-js安装" class="headerlink" title="1.node.js安装"></a>1.node.js安装</h2><p><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a><br><img src="/2020/12/14/%E4%B8%BA%E4%BB%80%E4%B9%88&%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2hexo+github/1.png" alt="nodejs"></p>
 <h2 id="2-各种加速换源"><a href="#2-各种加速换源" class="headerlink" title="2.各种加速换源"></a>2.各种加速换源</h2><p>不加速，后面安装会卡住，例如npm卡住,hexo init卡住</p>
 <h3 id="2-1-git-clone加速"><a href="#2-1-git-clone加速" class="headerlink" title="2.1 git clone加速"></a>2.1 git clone加速</h3><p><em>http&amp;https方式</em><br>通过 http 链接 clone 代码时走 http 代理  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy &quot;http:&#x2F;&#x2F;127.0.0.1:1081&quot;</span><br></pre></td></tr></table></figure>
@@ -230,7 +238,7 @@
 <h2 id="3-安装hexo-next"><a href="#3-安装hexo-next" class="headerlink" title="3. 安装hexo+next"></a>3. 安装hexo+next</h2><h3 id="安装hexo-next"><a href="#安装hexo-next" class="headerlink" title="安装hexo+next"></a>安装hexo+next</h3><p>npm install -g hexo-cli<br><code>git clone https://github.com/theme-next/hexo-theme-next themes/next</code></p>
 <h3 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h3><p>修改_config.yml<br>theme: next</p>
 <h3 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h3><p>初始化<br>hexo init possib1e<br>cd possib1e </p>
-<p>清楚缓存<br>hexo clean</p>
+<p>清除缓存<br>hexo clean</p>
 <p>新建文章<br>hexo n test_my_site</p>
 <p>生成<br>hexo g</p>
 <p>启动服务预览<br>hexo s</p>
@@ -238,12 +246,16 @@
 <p>安装如下插件<br>cnpm install –save hexo-deployer-git<br>npm install hexo-deployer-git –save</p>
 <p>修改_config.yml<br>deploy:<br> type: ‘git’<br> repo: <a target="_blank" rel="noopener" href="https://github.com/possib1e/possib1e.github.io.git">https://github.com/possib1e/possib1e.github.io.git</a><br> branch: master</p>
 <p>一键上传部署<br><strong>hexo d</strong></p>
-<p>ps:<br>github上面的仓库名字必须是 你用户名.github.io</p>
+<p>ps:<br>github上面的仓库名字必须是 你用户名.github.io，具体安装git工具和配置github ssh的过程可以百度。</p>
 <h3 id="首页显示摘要"><a href="#首页显示摘要" class="headerlink" title="首页显示摘要"></a>首页显示摘要</h3><p>在需要截断的地方输入<br><code>&lt;!--more--&gt;</code></p>
 <h3 id="图片插件"><a href="#图片插件" class="headerlink" title="图片插件"></a>图片插件</h3><p>npm install <a target="_blank" rel="noopener" href="https://github.com/CodeFalling/hexo-asset-image">https://github.com/CodeFalling/hexo-asset-image</a> –save</p>
 <p>修改主题配置文件_config.yml，生成文章自动生成图像目录<br>post_asset_folder:true</p>
 <p>修改Typero<br>文件-&gt;偏好设置，下拉找到 <strong>图片插入</strong>修改如下，即可粘贴自动存储到目录<br>./${filename}/</p>
-<p>否则，一般使用情况是讲图片放在文章名字的目录下，在需要图片的地方插入<br><code>![test](hexo+next博客搭建记录/1.png)</code></p>
+<p>否则，一般使用情况是将图片放在文章名字的目录下，在需要图片的地方插入<br><code>![test](为什么&amp;如何搭建个人技术博客hexo+github/1.png)</code></p>
+<h3 id="配置文件位置"><a href="#配置文件位置" class="headerlink" title="配置文件位置"></a>配置文件位置</h3><p>站点配置文件<br>_config.yml</p>
+<p>主题配置文件<br>\themes\next_config.yml</p>
+<p>菜单栏<br>\source\</p>
+<p>发布的文章和图片<br>\source_posts\</p>
 <h3 id="坑点"><a href="#坑点" class="headerlink" title="坑点"></a>坑点</h3><p><strong>切换主题报错</strong><br>ERROR {<br>  err: [Error: EISDIR: illegal operation on a directory, read] {<br>  errno: -4068,<br>  code: ‘EISDIR’,<br>  syscall: ‘read’<br> }</p>
 <p>} Plugin load failed: %s hexo-theme-landscape</p>
 <p>解决方法：<br>修改package.json文件，去掉,”hexo-theme-landscape”: “^0.0.3”这个依赖</p>
@@ -251,6 +263,14 @@
 <p><strong>中文目录无法跳转bug</strong><br><a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/pull/1540/commits/ec521c927dc10255977324284c1c667f2e220da7">https://github.com/theme-next/hexo-theme-next/pull/1540/commits/ec521c927dc10255977324284c1c667f2e220da7</a></p>
 <p><strong>typero换行间距过大</strong><br>因为typero默认回车是段落的意思，相当于换一行，空一行，所以行间距过大，需要使用shift+enter才是换一行，无法修改，严重影响平时使用的习惯，所以换vscode，微软产品，免费开源，还有很多插件可用。</p>
 <p><strong>vscode markdown回车换行不生效</strong><br>按Ctrl+Shift+P调出搜索栏, 输入setting,找到Open Settings(JSON),在其中添加一行”markdown.preview.breaks”:true.问题解决.</p>
+<h2 id="4-日常写博客操作"><a href="#4-日常写博客操作" class="headerlink" title="4.日常写博客操作"></a>4.日常写博客操作</h2><p>清除缓存<br>hexo clean</p>
+<p>新建文章<br>hexo n how_to_hack<br>文章会在如下目录生成\source_posts\how_to_hack.md</p>
+<p>编辑how_to_hack.md</p>
+<p>生成相关文件<br>hexo g</p>
+<p>启动本地服务预览<br>hexo s</p>
+<p>本地浏览网页效果<br><a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a></p>
+<p>一键上传github<br>hexo d</p>
+<p>浏览最终网页<br>possib1e.github.io</p>
 
     </div>
 
@@ -328,7 +348,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-node-js%E5%AE%89%E8%A3%85"><span class="nav-text">1.node.js安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%90%84%E7%A7%8D%E5%8A%A0%E9%80%9F%E6%8D%A2%E6%BA%90"><span class="nav-text">2.各种加速换源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-git-clone%E5%8A%A0%E9%80%9F"><span class="nav-text">2.1 git clone加速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-npm%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%8A%A0%E9%80%9F"><span class="nav-text">2.2 npm安装依赖加速</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85hexo-next"><span class="nav-text">3. 安装hexo+next</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85hexo-next"><span class="nav-text">安装hexo+next</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="nav-text">修改主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8D%9A%E5%AE%A2"><span class="nav-text">初始化博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE"><span class="nav-text">一键部署配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%91%98%E8%A6%81"><span class="nav-text">首页显示摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E6%8F%92%E4%BB%B6"><span class="nav-text">图片插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%91%E7%82%B9"><span class="nav-text">坑点</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-node-js%E5%AE%89%E8%A3%85"><span class="nav-text">1.node.js安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%90%84%E7%A7%8D%E5%8A%A0%E9%80%9F%E6%8D%A2%E6%BA%90"><span class="nav-text">2.各种加速换源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-git-clone%E5%8A%A0%E9%80%9F"><span class="nav-text">2.1 git clone加速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-npm%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%8A%A0%E9%80%9F"><span class="nav-text">2.2 npm安装依赖加速</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85hexo-next"><span class="nav-text">3. 安装hexo+next</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85hexo-next"><span class="nav-text">安装hexo+next</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="nav-text">修改主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8D%9A%E5%AE%A2"><span class="nav-text">初始化博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE"><span class="nav-text">一键部署配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%91%98%E8%A6%81"><span class="nav-text">首页显示摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E6%8F%92%E4%BB%B6"><span class="nav-text">图片插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE"><span class="nav-text">配置文件位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%91%E7%82%B9"><span class="nav-text">坑点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%97%A5%E5%B8%B8%E5%86%99%E5%8D%9A%E5%AE%A2%E6%93%8D%E4%BD%9C"><span class="nav-text">4.日常写博客操作</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -337,7 +357,7 @@
     <img class="site-author-image" itemprop="image" alt="possib1e"
       src="/uploads/avatar.png">
   <p class="site-author-name" itemprop="name">possib1e</p>
-  <div class="site-description" itemprop="description">黑客大叔possib1e</div>
+  <div class="site-description" itemprop="description">安全爱好者</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -352,10 +372,10 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/possib1e" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;possib1e" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:possib1e@126.com" title="E-Mail → mailto:possib1e@126.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
   </div>
 
@@ -367,7 +387,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="http://yoursite.com/" title="http:&#x2F;&#x2F;yoursite.com" rel="noopener" target="_blank">Title</a>
+          <a href="https://possib1e.github.io/" title="https:&#x2F;&#x2F;possib1e.github.io&#x2F;" rel="noopener" target="_blank">Title</a>
         </li>
     </ul>
   </div>
