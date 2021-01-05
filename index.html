@@ -166,7 +166,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/12/18/thinkphp/" class="post-title-link" itemprop="url">thinkphp</a>
+            <a href="/2020/12/18/thinkphp/" class="post-title-link" itemprop="url">通过学thinkphp开发理解漏洞</a>
         </h2>
 
         <div class="post-meta">
@@ -175,10 +175,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-12-18 16:22:28 / 修改时间：18:28:48" itemprop="dateCreated datePublished" datetime="2020-12-18T16:22:28+08:00">2020-12-18</time>
+              <time title="创建时间：2020-12-18 16:22:28" itemprop="dateCreated datePublished" datetime="2020-12-18T16:22:28+08:00">2020-12-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-05 12:55:55" itemprop="dateModified" datetime="2021-01-05T12:55:55+08:00">2021-01-05</time>
+              </span>
 
           
 
@@ -191,32 +197,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="1-为什么学thinkphp开发"><a href="#1-为什么学thinkphp开发" class="headerlink" title="1. 为什么学thinkphp开发"></a>1. 为什么学thinkphp开发</h2><p>因为最近遇到很多thinkphp的站点，经常存在一些感觉很不应该的漏洞，所以在思考为什么呢？</p>
-<p>个人猜测，这种tp改的站点，一般都是小站点，一般都是个人全栈开发的，完成就是一个挑战，更不用说安全性了，开发人员可能很多功能点都不会，需要慢慢看手册去复制粘贴修改来实现，所以安全性就在于官方手册的例子，而官方手册给的例子，一般首先都是简单功能的实现，接着才是特殊功能，安全性的实现。下面举2个例子。</p>
-<h3 id="1-1-上传漏洞"><a href="#1-1-上传漏洞" class="headerlink" title="1.1 上传漏洞"></a>1.1 上传漏洞</h3><p>我们看下官方的thinkphp5.1完全开发手册，关于上传部分开头是这么写的，完全没有进行任何后缀的验证，有的开发人员就只看到前面，复制粘贴修改已经够完成功能了，就不看后面的资料了。<br><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp5_1/353946">https://www.kancloud.cn/manual/thinkphp5_1/353946</a><br><img src="/2020/12/18/thinkphp/1.png"></p>
-<p>有后缀验证的例子在普通上传文件例子，多文件上传例子后面，<br><img src="/2020/12/18/thinkphp/2.png"></p>
-<h3 id="1-2-未授权访问"><a href="#1-2-未授权访问" class="headerlink" title="1.2 未授权访问"></a>1.2 未授权访问</h3><p>thinkphp开发对于权限的验证<br>一种是新建一个Base的类，在里面initialize进行session的判断，然后其他类继承Base类，整个类的方法就都需要有权限才能访问<br><img src="/2020/12/18/thinkphp/3.png"><br><img src="/2020/12/18/thinkphp/4.png"></p>
-<p>一种是还是默认继承Controller，但是在自己类里面进行session和是否登陆的判断</p>
-<p>一种是比如thinkadmin这种thinkphp二改的后台项目，进行了封装，在相应的操作方法前面写上这种注释即可。<br><a target="_blank" rel="noopener" href="http://doc.thinkadmin.top/thinkadmin-v5/1201770">http://doc.thinkadmin.top/thinkadmin-v5/1201770</a><br><img src="/2020/12/18/thinkphp/5.png"></p>
-<h4 id="为什么存在漏洞"><a href="#为什么存在漏洞" class="headerlink" title="为什么存在漏洞"></a>为什么存在漏洞</h4><p>1.普通thinkphp项目，新建controller类，忘记修改继承自Base，默认是继承Controller；<br>2.基于thinkadmin项目，新建方法时候，忘记添加那段块注释的权限控制。</p>
-<h2 id="2-正式开发"><a href="#2-正式开发" class="headerlink" title="2 正式开发"></a>2 正式开发</h2><p>thinkphp5.1官方完全开发手册<br><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp5_1/353946">https://www.kancloud.cn/manual/thinkphp5_1/353946</a></p>
-<h3 id="2-1-开发环境"><a href="#2-1-开发环境" class="headerlink" title="2.1 开发环境"></a>2.1 开发环境</h3><p>服务器：ubuntu虚拟机<br>安装宝塔，宝塔新建网站，nginx+php7+mysql<br>根目录设置为：/www/wwwroot/w<a target="_blank" rel="noopener" href="http://www.think.com/public">www.think.com/public</a><br>创建ftp,mysql,伪静态，去掉跨站，数据库给权限所有人，方便本地操作</p>
-<p>开发：物理机win10<br>安装phpstorm，xshell<br>phpstorm配置ftp自动上传，位置在tools/deployment</p>
-<h3 id="2-2-创建项目"><a href="#2-2-创建项目" class="headerlink" title="2.2 创建项目"></a>2.2 创建项目</h3><p>创建项目，下载thinkphp相关文件，修改权限，注意远程登陆的权限可能是root，但是真正运行php网站的用户是www，所以可能存在权限问题，无法修改文件。<br>composer create-project topthink/think=5.1.39 <a target="_blank" rel="noopener" href="http://www.think.com/">www.think.com</a><br>cd <a target="_blank" rel="noopener" href="http://www.think.com/">www.think.com</a><br>chown -R <a target="_blank" rel="noopener" href="http://www.www/">www.www</a> ./*<br>chmod -R 750 ./*</p>
-<p>新建后台控制器，页面的逻辑，是用户可以直接URL访问到的<br>php think make:controller admin/Login</p>
-<p>创建数据模型，用户数据库操作，相当于封装了数据库表的内容和操作方法<br>php think make:model admin/AdminModel</p>
-<p>创建验证器类，验证提交的数据有效性<br>php think make:validate admin/LoginValidate</p>
-<p>开启调试模式，方便排错<br>config/app.php中<br> ‘app_debug’              =&gt; true,</p>
-<p>下载的静态html模板(比如这些资源是admin这个模块用到的)<br>静载资源js、css、img、lib存放在public/admin/下面<br>html存放在application/admin/view/login/下面</p>
-<h3 id="2-3-目录结构"><a href="#2-3-目录结构" class="headerlink" title="2.3 目录结构"></a>2.3 目录结构</h3><p>thinkphp5.1<br>www  WEB部署目录（或者子目录）<br>├─application           应用目录<br>│  ├─common             公共模块目录（可以更改）<br>│  ├─module_name        模块目录<br>│  │  ├─common.php      模块函数文件<br>│  │  ├─controller      控制器目录<br>│  │  ├─model           模型目录<br>│  │  ├─view            视图目录<br>│  │  ├─config          配置目录<br>│  │  └─ …            更多类库目录<br>│  │<br>│  ├─command.php        命令行定义文件<br>│  ├─common.php         公共函数文件<br>│  └─tags.php           应用行为扩展定义文件<br>│<br>├─config                应用配置目录<br>│  ├─module_name        模块配置目录<br>│  │  ├─database.php    数据库配置<br>│  │  ├─cache           缓存配置<br>│  │  └─ …<br>│  │<br>│  ├─app.php            应用配置<br>│  ├─cache.php          缓存配置<br>│  ├─cookie.php         Cookie配置<br>│  ├─database.php       数据库配置<br>│  ├─log.php            日志配置<br>│  ├─session.php        Session配置<br>│  ├─template.php       模板引擎配置<br>│  └─trace.php          Trace配置<br>│<br>├─route                 路由定义目录<br>│  ├─route.php          路由定义<br>│  └─…                更多<br>│<br>├─public                WEB目录（对外访问目录）<br>│  ├─index.php          入口文件<br>│  ├─router.php         快速测试文件<br>│  └─.htaccess          用于apache的重写<br>│<br>├─thinkphp              框架系统目录<br>│  ├─lang               语言文件目录<br>│  ├─library            框架类库目录<br>│  │  ├─think           Think类库包目录<br>│  │  └─traits          系统Trait目录<br>│  │<br>│  ├─tpl                系统模板目录<br>│  ├─base.php           基础定义文件<br>│  ├─convention.php     框架惯例配置文件<br>│  ├─helper.php         助手函数文件<br>│  └─logo.png           框架LOGO文件<br>│<br>├─extend                扩展类库目录<br>├─runtime               应用的运行时目录（可写，可定制）<br>├─vendor                第三方类库目录（Composer依赖库）<br>├─build.php             自动生成定义文件（参考）<br>├─composer.json         composer 定义文件<br>├─LICENSE.txt           授权说明文件<br>├─README.md             README 文件<br>├─think                 命令行入口文件</p>
-<h3 id="2-4-thinkphp开发黑客需要知道的知识点"><a href="#2-4-thinkphp开发黑客需要知道的知识点" class="headerlink" title="2.4 thinkphp开发黑客需要知道的知识点"></a>2.4 thinkphp开发黑客需要知道的知识点</h3><h4 id="2-4-1-url链接-controller控制器-html静态页面关系"><a href="#2-4-1-url链接-controller控制器-html静态页面关系" class="headerlink" title="2.4.1 url链接 controller控制器 html静态页面关系:"></a>2.4.1 url链接 controller控制器 html静态页面关系:</h4><p>可以参考视图的渲染<br><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp5_1/354065">https://www.kancloud.cn/manual/thinkphp5_1/354065</a></p>
-<p>比如我们访问如下链接<br><a target="_blank" rel="noopener" href="http://www.think.com/index.php/admin/index/login">http://www.think.com/index.php/admin/index/login</a><br>调用的方法是<br>/www/application/admin/controller/Index.php中的login方法<br>如果返回的是html页面，则对应的文件是<br>/www/application/admin/view/index/login.html</p>
-<p>比如我们访问如下链接<br><a target="_blank" rel="noopener" href="http://www.think.com/index.php/admin/index/index">http://www.think.com/index.php/admin/index/index</a><br>调用的方法是<br>/www/application/admin/controller/Index.php中的index方法<br>如果返回的是html页面，则对应的文件是<br>/www/application/admin/view/index/index.html</p>
-<h4 id="2-4-2-html页面可以运行php代码"><a href="#2-4-2-html页面可以运行php代码" class="headerlink" title="2.4.2 html页面可以运行php代码"></a>2.4.2 html页面可以运行php代码</h4><p>这部分属于内置标签，参考如下<br><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp5_1/354089">https://www.kancloud.cn/manual/thinkphp5_1/354089</a></p>
-<p>只要在相应的html里面如下2种写法之一，即可在访问时候视图自动渲染执行php代码<br><code>&#123;php&#125;phpinfo();&#123;/php&#125;</code><br><code>&lt;?php phpinfo();?&gt;</code></p>
-<p>本地ubuntu<br>宝塔<br>外网面板地址: <a target="_blank" rel="noopener" href="http://112.49.230.119:8888/c0e6bc15">http://112.49.230.119:8888/c0e6bc15</a><br>内网面板地址: <a target="_blank" rel="noopener" href="http://192.168.168.6:8888/c0e6bc15">http://192.168.168.6:8888/c0e6bc15</a><br>username: xfw3b3tk<br>password: c93c9708</p>
-<p>FTP账号资料<br>用户：www_think_com<br>密码：CmmSijkJGzbip4hc<br>数据库账号资料<br>数据库名：www_think_com<br>用户：www_think_com<br>密码：AGwWxLZNY3TMMR7y</p>
-
+          <h2 id="1-为什么学thinkphp开发"><a href="#1-为什么学thinkphp开发" class="headerlink" title="1 为什么学thinkphp开发"></a>1 为什么学thinkphp开发</h2><p>最近遇到很多thinkphp的站点，经常存在一些很不应该的漏洞，一直不理解为什么开发会留下这样的漏洞，明明修复很简单的。</p>
+<p>个人感觉，这种基于tp开发的站点，一般都是小站点，大部分是个人全栈开发的，完成功能就是一个挑战，更不用说安全性了，开发人员可能需要看手册去复制粘贴修改代码来实现。所以安全与否取决于官方手册的例子。而官方手册给的例子，一般首先都是简单功能的实现，接着才是特殊功能、带有安全性的实现，有的开发者赶时间，一般只看前面的简单例子，发现能满足需求就直接用了。下面举两个例子。</p>
+<h2 id="2-通过学开发找到的漏洞"><a href="#2-通过学开发找到的漏洞" class="headerlink" title="2 通过学开发找到的漏洞"></a>2 通过学开发找到的漏洞</h2><p>在B站上看了两个thinkphp开发的视频，自己写了个SRC资产后台管理系统，丑是丑了点，但是基本的登陆、添加、上传、数据库的增删改查、前后端之间的数据交互都用到了，发现按照视频的开发套路，会存在如下的漏洞。<br><img src="/2020/12/18/thinkphp/7.png"><br><img src="/2020/12/18/thinkphp/8.png"><br><img src="/2020/12/18/thinkphp/9.png"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/18/thinkphp/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -491,7 +482,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
